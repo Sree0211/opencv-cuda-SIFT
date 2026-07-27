@@ -1,0 +1,37 @@
+# Build files
+build/
+cmake-build-*/
+
+# 3rd Party dependencies
+third_party/opencv_contrib/
+
+# Compiled files
+*.o
+*.a
+*.so
+*.dylib
+
+# IDE
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+compile_commands.json
+cmake_install.cmake
+install_manifest.txt
+Makefile
+
+# Testing
+Testing/
+
+# Logs
+*.log
