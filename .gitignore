@@ -3,18 +3,27 @@ build/
 cmake-build-*/
 
 # 3rd Party dependencies
-third_party/opencv_contrib/
+third_party/
 
 # Compiled files
 *.o
+*.obj
+*.lo
 *.a
+*.lib
 *.so
+*.so.*
 *.dylib
+*.dll
+*.exe
 
 # IDE
 .vscode/
 .idea/
 
+# Visual Studio
+.vs/
+*.vcxproj.user
 # macOS
 .DS_Store
 
@@ -25,7 +34,6 @@ __pycache__/
 # CMake
 CMakeCache.txt
 CMakeFiles/
-compile_commands.json
 cmake_install.cmake
 install_manifest.txt
 Makefile
