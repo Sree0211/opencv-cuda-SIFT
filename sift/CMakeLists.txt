@@ -28,6 +28,8 @@ add_library(sift STATIC
     ${SIFT_SOURCES}
 )
 
+add_subdirectory(cuda)
+
 target_include_directories(sift PUBLIC
     include
 )

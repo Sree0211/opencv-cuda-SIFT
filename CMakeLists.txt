@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.22)
 project(
     opencv_cuda_sift
     VERSION 0.1.0
-    LANGUAGES CXX
+    LANGUAGES CXX CUDA
 )
 
 set(CMAKE_CXX_STANDARD 17)
