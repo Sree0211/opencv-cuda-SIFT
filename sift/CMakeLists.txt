@@ -14,7 +14,6 @@ set(SIFT_HEADERS
 )
 
 set(SIFT_SOURCES
-    src/image.cpp
     src/gaussian.cpp
     src/gaussian_pyramid.cpp
     src/DoG.cpp
@@ -28,7 +27,9 @@ add_library(sift STATIC
     ${SIFT_SOURCES}
 )
 
-add_subdirectory(cuda)
+if(SIFT_CUDA_ENV)
+    add_subdirectory(cuda)
+endif()
 
 target_include_directories(sift PUBLIC
     include
