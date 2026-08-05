@@ -1,0 +1,29 @@
+name: Build SIFT
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install dependencies
+      run: |
+          sudo apt update
+          sudo apt install -y libgtest-dev
+    - name: Configure CMake
+      run: |
+        cmake -B build -S .
+    - name: Build project
+      run: |
+        cmake --build build --config Release
+    - name: Run tests
+      run: |
+        ctest --test-dir build
+
