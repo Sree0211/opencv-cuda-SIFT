@@ -26,7 +26,7 @@ std::vector<float> GaussianBlur::makeGaussianKernel(float sigma)
 		const float x = static_cast<float>(i);
 		const float value = exp(-1 * (x * x) / (2.0f * sigma * sigma));
 
-		kernel[static_cast<std::vector<float, std::allocator<float>>::size_type>(i) + radius] = value;
+		kernel[i + radius] = value;
 		sum += value;
 	}
 

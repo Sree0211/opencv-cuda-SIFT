@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <string>
 
+constexpr int dim = 16;
 namespace gaussian_kernel{
 
 void check_cuda(cudaError_t status, const char* message) {
@@ -12,52 +13,87 @@ void check_cuda(cudaError_t status, const char* message) {
     }
 }
 
-__global__ void copy_kernel(const float* input, float* output, int count) {
-    int idx = blockIdx.x * blockDim.x + threadIdx.x;
-    if (idx < count) {
-        output[idx] = input[idx];
+__device__ void gaussian_blur_vertical(){
+
+}
+
+__global__ void gaussian_blur_hor(const float* input, float* output, int width, int height, const float* kernel) {
+    int row = blockIdx.y * blockDim.y + threadIdx.y;
+    int col = blockIdx.x * blockDim.x + threadIdx.x;
+
+    const int radius = static_cast<int>(kernel.size()) / 2;
+    __shared__ float blockA[dim + radius];
+
+    if(row < height & col < width){
+
     }
+    
 }
 
 }  // namespace gaussian_kernel
 
 namespace sift::cuda {
 
-GaussianResult gaussian_blur(const std::vector<float>& input,
-                             std::size_t width,
-                             std::size_t height,
-                             float sigma) {
+std::vector<float> makeGaussianKernel(float sigma)
+{
+	const int radius = static_cast<int>(ceil((3.0f * sigma)));
+	const int size = 2 * radius + 1;
+
+	// Calculate Gaussians
+	std::vector<float> kernel(size);
+	float sum = 0.0f;
+
+	for (int i = -radius; i < radius; i++) {
+		const float x = static_cast<float>(i);
+		const float value = exp(-1 * (x * x) / (2.0f * sigma * sigma));
+
+		kernel[i + radius] = value;
+		sum += value;
+	}
+
+	for (float& val : kernel) {
+		val /= sum;
+	}
+
+	return kernel;
+}
+
+Image gaussian_blur(const Image& input, float sigma) {
     (void)sigma;
 
-    if (input.size() != width * height) {
-        throw std::invalid_argument("Input size does not match width and height");
-    }
+    Image result;
+    result.width = input.width;
+    result.height = input.height;
 
-    GaussianResult result;
-    result.width = width;
-    result.height = height;
-    result.data.resize(input.size());
+    // Perform kernel calculation
+    float sigma = 1.6f;
+    std::vector<float> kernel = makeGaussianKernel(sigma);
 
     float* device_input = nullptr;
     float* device_output = nullptr;
+    float* device_gaussKernel = nullptr;
 
-    check_cuda(cudaMalloc(&device_input, input.size() * sizeof(float)), "cudaMalloc input");
-    check_cuda(cudaMalloc(&device_output, result.data.size() * sizeof(float)), "cudaMalloc output");
+    check_cuda(cudaMalloc(&device_input, input.pixels.size() * sizeof(float)), "cudaMalloc input");
+    check_cuda(cudaMalloc(&device_output, result.pixels.size() * sizeof(float)), "cudaMalloc output");
+    check_cuda(cudaMalloc(&device_gaussKernel, kernel.size() * sizeof(float)), "cudaMalloc Gaussian Kernel");
 
-    check_cuda(cudaMemcpy(device_input, input.data(), input.size() * sizeof(float), cudaMemcpyHostToDevice),
+    check_cuda(cudaMemcpy(device_input, input.pixels.data(), input.pixels.size() * sizeof(float), cudaMemcpyHostToDevice),
+               "cudaMemcpy input to device");
+    check_cuda(cudaMemcpy(device_gaussKernel, kernel.data(), kernel.size() * sizeof(float), cudaMemcpyHostToDevice),
                "cudaMemcpy input to device");
 
-    int thread_count = 256;
-    int block_count = (static_cast<int>(input.size()) + thread_count - 1) / thread_count;
-    copy_kernel<<<block_count, thread_count>>>(device_input, device_output, static_cast<int>(input.size()));
+    dim3 threadsPerBlock(dim,dim);
+    dim3 blocksPerGrid((input.height + dim - 1)/dim, (input.width + dim - 1)/dim);
+    gaussian_blur_kernel<<<blocksPerGrid, threadsPerBlock>>>(device_input, device_output, input.width, input.height, device_gaussKernel);
 
     check_cuda(cudaGetLastError(), "launch copy kernel");
     check_cuda(cudaDeviceSynchronize(), "kernel synchronization");
-    check_cuda(cudaMemcpy(result.data.data(), device_output, result.data.size() * sizeof(float), cudaMemcpyDeviceToHost),
+    check_cuda(cudaMemcpy(result.pixels.data(), device_output, result.pixels.size() * sizeof(float), cudaMemcpyDeviceToHost),
                "cudaMemcpy output to host");
 
     cudaFree(device_input);
     cudaFree(device_output);
+    cudaFree(device_gaussKernel);
 
     return result;
 }

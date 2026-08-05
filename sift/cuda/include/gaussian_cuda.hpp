@@ -1,21 +1,17 @@
-#pragma once
+#ifndef GAUSSIANCUDA_H
+#define GAUSSIANCUDA_H
 
 #include <cstddef>
 #include <vector>
 
+#include "../include/image.hpp"
+
 namespace sift::cuda {
 
-struct GaussianResult {
-    std::vector<float> data;
-    std::size_t width{};
-    std::size_t height{};
-};
-
-GaussianResult gaussian_blur(const std::vector<float>& input,
-                             std::size_t width,
-                             std::size_t height,
-                             float sigma);
+Image gaussian_blur(const Image& input, float sigma);
 
 bool run_gaussian_smoke_test();
 
 }  // namespace sift::cuda
+
+#endif
