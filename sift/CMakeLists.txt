@@ -1,7 +1,12 @@
 cmake_minimum_required(VERSION 3.22)
 
-find_package(OpenCV REQUIRED)
 find_package(Threads REQUIRED)
+
+option(SIFT_USE_OPENCV "Build with OpenCV support" OFF)
+
+if(SIFT_USE_OPENCV)
+    find_package(OpenCV REQUIRED)
+endif()
 
 set(SIFT_HEADERS
     include/image.hpp
@@ -37,8 +42,15 @@ target_include_directories(sift PUBLIC
 
 target_link_libraries(sift PUBLIC
     Threads::Threads
-    ${OpenCV_LIBS}
 )
+
+if(SIFT_USE_OPENCV)
+    target_link_libraries(sift PUBLIC ${OpenCV_LIBS})
+    target_include_directories(sift
+        PUBLIC
+            ${OpenCV_INCLUDE_DIRS}
+    )
+endif()
 
 # Executable
 add_executable(sift_app 

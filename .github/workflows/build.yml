@@ -16,10 +16,13 @@ jobs:
     - name: Install dependencies
       run: |
           sudo apt update
-          sudo apt install -y libgtest-dev
+          sudo apt install -y \
+          cmake \
+          build-essential \
+          libgtest-dev
     - name: Configure CMake
       run: |
-        cmake -B build -S .
+        cmake -B build -S . -DSIFT_USE_OPENCV=OFF
     - name: Build project
       run: |
         cmake --build build --config Release
