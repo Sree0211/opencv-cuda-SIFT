@@ -1,6 +1,6 @@
 #include "gaussian.hpp"
 
-GaussianBlur::GaussianBlur(float sigma_) : sigma(sigma_)
+GaussianBlur::GaussianBlur(float sigma_) : sigma(m_sigma)
 {
 }
 
