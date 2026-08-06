@@ -37,6 +37,7 @@ CMakeFiles/
 cmake_install.cmake
 install_manifest.txt
 Makefile
+CMakePresets.json
 
 # Testing
 Testing/

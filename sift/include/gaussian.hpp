@@ -1,9 +1,9 @@
 #ifndef GAUSSIAN_H
 #define GAUSSIAN_H
 
+#include <cmath>
 #include <cstdint>
 #include <vector>
-#include <algorithm>
 
 #include "image.hpp"
 
@@ -21,8 +21,8 @@ private:
 	std::vector<float> makeGaussianKernel(float sigma);
 	Image convolveHorizontal(const Image& input, const std::vector<float>& kernel);
 	Image convolveVertical(const Image& input, const std::vector<float>& kernel);
-
-	float sigma = 1.6f;
+	
+	float m_sigma = 0.0f;
 };
 
 #endif
