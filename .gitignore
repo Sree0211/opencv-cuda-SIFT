@@ -44,3 +44,8 @@ Testing/
 
 # Logs
 *.log
+
+# Local benchmark executables
+benchmark_*
+benchmarks/build/
+benchmarks/bin/
