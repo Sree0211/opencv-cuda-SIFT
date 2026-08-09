@@ -1,7 +1,4 @@
-#pragma once
-
-#include "../include/image.hpp"
-#include "../include/gaussian.hpp"
+ #include "../include/gaussian_cuda.hpp"
 
 #include <chrono>
 #include <iomanip>
@@ -34,14 +31,14 @@ double benchmark(
 
     // Warmup.
     for (int i = 0; i < warmup; ++i) {
-        auto result = sift::performGaussianBlur(input, sigma);
+        auto result = sift::cuda::gaussian_blur(input, sigma);
     }
 
     // Timed execution.
     auto start = Clock::now();
 
     for (int i = 0; i < iterations; ++i) {
-        auto result = sift::performGaussianBlur(input, sigma);
+        auto result = sift::cuda::gaussian_blur(input, sigma);
     }
 
     auto end = Clock::now();
@@ -55,7 +52,7 @@ double benchmark(
 
 int main()
 {
-  constexpr float sigma = 1.6f;
+    constexpr float sigma = 1.6f;
 
     constexpr int warmup = 5;
     constexpr int iterations = 20;

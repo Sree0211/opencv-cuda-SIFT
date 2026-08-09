@@ -10,20 +10,23 @@
 
 constexpr float pi = 3.14159265358979323846f;
 
-class GaussianBlur {
+namespace sift{
 
-public:
-	GaussianBlur() = default;
-	GaussianBlur(float sigma_);
+  class GaussianBlur {
 
-	Image performGaussianBlur(const Image& input, float sigma);
+  public:
+    GaussianBlur() = default;
+    GaussianBlur(float sigma_);
 
-private:
-	std::vector<float> makeGaussianKernel(float sigma);
-	Image convolveHorizontal(const Image& input, const std::vector<float>& kernel);
-	Image convolveVertical(const Image& input, const std::vector<float>& kernel);
-	
-	float m_sigma = 0.0f;
-};
+    Image performGaussianBlur(const Image& input, float sigma);
 
+  private:
+    std::vector<float> makeGaussianKernel(float sigma);
+    Image convolveHorizontal(const Image& input, const std::vector<float>& kernel);
+    Image convolveVertical(const Image& input, const std::vector<float>& kernel);
+    
+    float m_sigma = 0.0f;
+  };
+
+}
 #endif

@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <string>
 
-constexpr int dim = 16;
+constexpr int dim = 32;
 namespace {
 
 void check_cuda(cudaError_t status, const char* message) {
@@ -75,7 +75,7 @@ __global__ void gaussian_blur_horizontal(const float* input, float* output, int 
 
 namespace sift::cuda {
 
-std::vector<float> makeGaussianKernel(float sigma)
+__host__ std::vector<float> makeGaussianKernel(float sigma)
 {
 	const int radius = static_cast<int>(ceil((3.0f * sigma)));
 	const int size = 2 * radius + 1;
@@ -102,9 +102,7 @@ std::vector<float> makeGaussianKernel(float sigma)
 Image gaussian_blur(const Image& input, float sigma) {
     (void)sigma;
 
-    Image result;
-    result.width = input.width;
-    result.height = input.height;
+    Image result(input.width, input.height);
 
     // Perform kernel calculation
     std::vector<float> kernel = makeGaussianKernel(sigma);
@@ -126,7 +124,7 @@ Image gaussian_blur(const Image& input, float sigma) {
                "cudaMemcpy input to device");
 
     dim3 threadsPerBlock(dim,dim);
-    dim3 blocksPerGrid((input.height + dim - 1)/dim, (input.width + dim - 1)/dim);
+    dim3 blocksPerGrid((input.width + dim - 1)/dim, (input.height + dim - 1)/dim);
     gaussian_blur_horizontal<<<blocksPerGrid, threadsPerBlock, (threadsPerBlock.y)*(threadsPerBlock.x + kernelSize - 1)*sizeof(float)>>>(device_input, device_temp, input.width, input.height, device_gaussKernel, kernelSize);
 
     check_cuda(cudaGetLastError(), "launch copy kernel");

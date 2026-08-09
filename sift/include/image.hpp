@@ -4,29 +4,31 @@
 #include <vector>
 #include <cstdint>
 
-struct Image
-{
-    int width = 0;
-    int height = 0;
+namespace sift{
 
-    // Row major contiguous pixel data
-    std::vector<float> pixels;
+  struct Image
+  {
+      int width = 0;
+      int height = 0;
 
-    Image() = default;
-    Image(int width_, int height_)
-        : width(width_),
-        height(height_),
-        pixels(static_cast<size_t>(width_)* height_, 0.0f) {
-    };
+      // Row major contiguous pixel data
+      std::vector<float> pixels;
 
-    float& at(int x, int y){
-        return pixels[static_cast<size_t>(y) * width + x];
-    }
+      Image() = default;
+      Image(int width_, int height_)
+          : width(width_),
+          height(height_),
+          pixels(static_cast<size_t>(width_)* height_, 0.0f) {
+      };
 
-    float at(int x, int y) const{
-        return pixels[static_cast<size_t>(y) * width + x];
-    }
-    
-};
+      float& at(int x, int y){
+          return pixels[static_cast<size_t>(y) * width + x];
+      }
 
+      float at(int x, int y) const{
+          return pixels[static_cast<size_t>(y) * width + x];
+      }
+      
+  };
+}
 #endif
