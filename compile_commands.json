@@ -1,0 +1,56 @@
+[
+{
+  "directory": "/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I\"/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/include\" -std=c++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -o CMakeFiles/sift.dir/src/gaussian.cpp.o -c \"/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/src/gaussian.cpp\"",
+  "file": "/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/src/gaussian.cpp",
+  "output": "sift/CMakeFiles/sift.dir/src/gaussian.cpp.o"
+},
+{
+  "directory": "/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I\"/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/include\" -std=c++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -o CMakeFiles/sift.dir/src/gaussian_pyramid.cpp.o -c \"/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/src/gaussian_pyramid.cpp\"",
+  "file": "/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/src/gaussian_pyramid.cpp",
+  "output": "sift/CMakeFiles/sift.dir/src/gaussian_pyramid.cpp.o"
+},
+{
+  "directory": "/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I\"/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/include\" -std=c++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -o CMakeFiles/sift.dir/src/DoG.cpp.o -c \"/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/src/DoG.cpp\"",
+  "file": "/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/src/DoG.cpp",
+  "output": "sift/CMakeFiles/sift.dir/src/DoG.cpp.o"
+},
+{
+  "directory": "/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I\"/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/include\" -std=c++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -o CMakeFiles/sift.dir/src/extrema.cpp.o -c \"/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/src/extrema.cpp\"",
+  "file": "/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/src/extrema.cpp",
+  "output": "sift/CMakeFiles/sift.dir/src/extrema.cpp.o"
+},
+{
+  "directory": "/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I\"/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/include\" -std=c++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -o CMakeFiles/sift.dir/src/orientation.cpp.o -c \"/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/src/orientation.cpp\"",
+  "file": "/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/src/orientation.cpp",
+  "output": "sift/CMakeFiles/sift.dir/src/orientation.cpp.o"
+},
+{
+  "directory": "/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I\"/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/include\" -std=c++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -o CMakeFiles/sift.dir/src/descriptor.cpp.o -c \"/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/src/descriptor.cpp\"",
+  "file": "/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/src/descriptor.cpp",
+  "output": "sift/CMakeFiles/sift.dir/src/descriptor.cpp.o"
+},
+{
+  "directory": "/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I\"/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/include\" -std=c++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -o CMakeFiles/sift_app.dir/app/main.cpp.o -c \"/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/app/main.cpp\"",
+  "file": "/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/app/main.cpp",
+  "output": "sift/CMakeFiles/sift_app.dir/app/main.cpp.o"
+},
+{
+  "directory": "/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I\"/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/include\" -std=c++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -o CMakeFiles/test_gaussian.dir/tests/test_gaussian.cpp.o -c \"/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/tests/test_gaussian.cpp\"",
+  "file": "/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/tests/test_gaussian.cpp",
+  "output": "sift/CMakeFiles/test_gaussian.dir/tests/test_gaussian.cpp.o"
+},
+{
+  "directory": "/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I\"/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/include\" -std=c++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -o CMakeFiles/perf_gaussian.dir/perf/perf_gaussian.cpp.o -c \"/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/perf/perf_gaussian.cpp\"",
+  "file": "/Users/sreenathswaminathan/Desktop/Uni-Docs/Autonomous fahren kurs/CV Project/opencv-cuda-SIFT/sift/perf/perf_gaussian.cpp",
+  "output": "sift/CMakeFiles/perf_gaussian.dir/perf/perf_gaussian.cpp.o"
+}
+]

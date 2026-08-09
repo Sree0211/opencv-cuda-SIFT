@@ -1,6 +1,3 @@
-#pragma once
-
-#include "../include/image.hpp"
 #include "../include/gaussian.hpp"
 
 #include <chrono>
@@ -29,19 +26,19 @@ double benchmark(
     int iterations)
 {
     sift::Image input(width, height);
-
+    sift::GaussianBlur gaussBlur(sigma);
     fill_random(input);
 
     // Warmup.
     for (int i = 0; i < warmup; ++i) {
-        auto result = sift::performGaussianBlur(input, sigma);
+        auto result = gaussBlur.performGaussianBlur(input, sigma);
     }
 
     // Timed execution.
     auto start = Clock::now();
 
     for (int i = 0; i < iterations; ++i) {
-        auto result = sift::performGaussianBlur(input, sigma);
+        auto result = gaussBlur.performGaussianBlur(input, sigma);
     }
 
     auto end = Clock::now();

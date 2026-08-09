@@ -8,7 +8,7 @@
 
 namespace sift::cuda {
 
-Image gaussian_blur(const Image& input, float sigma);
+sift::Image gaussian_blur(const sift::Image& input, float sigma);
 
 bool run_gaussian_smoke_test();
 

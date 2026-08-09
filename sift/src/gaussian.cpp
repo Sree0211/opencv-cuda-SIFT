@@ -1,19 +1,19 @@
 #include "gaussian.hpp"
 
-GaussianBlur::GaussianBlur(float sigma_) : sigma(m_sigma)
+sift::GaussianBlur::GaussianBlur(float sigma_) : m_sigma(sigma_)
 {
 }
 
-Image GaussianBlur::performGaussianBlur(const Image& input, float sigma)
+sift::Image sift::GaussianBlur::performGaussianBlur(const sift::Image& input, float sigma)
 {
 	const auto kernel = makeGaussianKernel(sigma);
 
-	Image tempOut;
+	sift::Image tempOut;
 	tempOut = convolveHorizontal(input, kernel);
 	return convolveVertical(tempOut, kernel);
 }
 
-std::vector<float> GaussianBlur::makeGaussianKernel(float sigma)
+std::vector<float> sift::GaussianBlur::makeGaussianKernel(float sigma)
 {
 	const int radius = static_cast<int>(ceil((3.0f * sigma)));
 	const int size = 2 * radius + 1;
@@ -37,9 +37,9 @@ std::vector<float> GaussianBlur::makeGaussianKernel(float sigma)
 	return kernel;
 }
 
-Image GaussianBlur::convolveHorizontal(const Image& input, const std::vector<float>& kernel)
+sift::Image sift::GaussianBlur::convolveHorizontal(const sift::Image& input, const std::vector<float>& kernel)
 {
-	Image output(input.width, input.height);
+	sift::Image output(input.width, input.height);
 
 	const float radius = static_cast<int>(kernel.size() / 2);
 
@@ -56,9 +56,9 @@ Image GaussianBlur::convolveHorizontal(const Image& input, const std::vector<flo
 	return output;
 }
 
-Image GaussianBlur::convolveVertical(const Image& input, const std::vector<float>& kernel)
+sift::Image sift::GaussianBlur::convolveVertical(const sift::Image& input, const std::vector<float>& kernel)
 {
-	Image output(input.width, input.height);
+	sift::Image output(input.width, input.height);
 
 	const float radius = static_cast<int>(kernel.size() / 2);
 

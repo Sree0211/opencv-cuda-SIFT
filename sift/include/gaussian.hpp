@@ -18,12 +18,12 @@ namespace sift{
     GaussianBlur() = default;
     GaussianBlur(float sigma_);
 
-    Image performGaussianBlur(const Image& input, float sigma);
+    sift::Image performGaussianBlur(const sift::Image& input, float sigma);
 
   private:
     std::vector<float> makeGaussianKernel(float sigma);
-    Image convolveHorizontal(const Image& input, const std::vector<float>& kernel);
-    Image convolveVertical(const Image& input, const std::vector<float>& kernel);
+    sift::Image convolveHorizontal(const sift::Image& input, const std::vector<float>& kernel);
+    sift::Image convolveVertical(const sift::Image& input, const std::vector<float>& kernel);
     
     float m_sigma = 0.0f;
   };
