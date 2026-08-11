@@ -56,7 +56,7 @@ std::vector<sift::GaussianOctave> sift::GaussianPyramid::build()
     sift::Image octaveBase = m_inputImg;
     int octaveIndex = 0;
 
-    while ( (octaveBase.width >= minDownsampleImgSize) &&
+    while ((octaveBase.width >= minDownsampleImgSize) &&
         (octaveBase.height >= minDownsampleImgSize)) {
 
         sift::GaussianOctave octave = buildOctave(octaveBase, octaveIndex);
