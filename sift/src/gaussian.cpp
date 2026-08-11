@@ -1,13 +1,20 @@
 #include "gaussian.hpp"
 
+#include<stdexcept>
+#include<cassert>
+
 sift::GaussianBlur::GaussianBlur(float sigma_) : m_sigma(sigma_)
 {
 }
 
 sift::Image sift::GaussianBlur::performGaussianBlur(const sift::Image& input, float sigma)
 {
-	const auto kernel = makeGaussianKernel(sigma);
+	if (sigma <= 0.0f)
+	{
+    	throw std::invalid_argument("sigma must be greater than zero");
+	}
 
+	const auto kernel = makeGaussianKernel(sigma);
 	sift::Image tempOut;
 	tempOut = convolveHorizontal(input, kernel);
 	return convolveVertical(tempOut, kernel);
@@ -15,16 +22,18 @@ sift::Image sift::GaussianBlur::performGaussianBlur(const sift::Image& input, fl
 
 std::vector<float> sift::GaussianBlur::makeGaussianKernel(float sigma)
 {
-	const int radius = static_cast<int>(ceil((3.0f * sigma)));
+	assert(sigma > 0.0f);
+
+	const int radius = static_cast<int>(std::ceil((3.0f * sigma)));
 	const int size = 2 * radius + 1;
 
 	// Calculate Gaussians
 	std::vector<float> kernel(size);
 	float sum = 0.0f;
 
-	for (int i = -radius; i < radius; i++) {
+	for (int i = -radius; i <= radius; i++) {
 		const float x = static_cast<float>(i);
-		const float value = exp(-1 * (x * x) / (2.0f * sigma * sigma));
+		const float value = std::exp(-1 * (x * x) / (2.0f * sigma * sigma));
 
 		kernel[i + radius] = value;
 		sum += value;
@@ -41,12 +50,12 @@ sift::Image sift::GaussianBlur::convolveHorizontal(const sift::Image& input, con
 {
 	sift::Image output(input.width, input.height);
 
-	const float radius = static_cast<int>(kernel.size() / 2);
+	const int radius = static_cast<int>(kernel.size() / 2);
 
-	for (int y = 0; y < input.width; ++y) {
-		for (int x = 0; x < input.height; ++x) {
+	for (int y = 0; y < input.height; ++y) {
+		for (int x = 0; x < input.width; ++x) {
 			float sum = 0.0f;
-			for (int k = -radius; k < radius; ++k) {
+			for (int k = -radius; k <= radius; ++k) {
 				const int SampleX = std::clamp(x + k, 0, input.width - 1);
 				sum += input.at(SampleX, y)*kernel[k + radius];
 			}
@@ -60,12 +69,12 @@ sift::Image sift::GaussianBlur::convolveVertical(const sift::Image& input, const
 {
 	sift::Image output(input.width, input.height);
 
-	const float radius = static_cast<int>(kernel.size() / 2);
+	const int radius = static_cast<int>(kernel.size() / 2);
 
-	for (int y = 0; y < input.width; ++y) {
-		for (int x = 0; x < input.height; ++x) {
+	for (int y = 0; y < input.height; ++y) {
+		for (int x = 0; x < input.width; ++x) {
 			float sum = 0.0f;
-			for (int k = -radius; k < radius; ++k) {
+			for (int k = -radius; k <= radius; ++k) {
 				const int SampleY = std::clamp(y + k, 0, input.height - 1);
 				sum += input.at(x, SampleY) * kernel[k + radius];
 			}

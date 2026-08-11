@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <cstdint>
+#include <cassert>
 
 namespace sift{
 
@@ -19,6 +20,8 @@ namespace sift{
           : width(width_),
           height(height_),
           pixels(static_cast<size_t>(width_)* height_, 0.0f) {
+          assert(width_ >= 0);
+          assert(height_ >= 0);
       };
 
       float& at(int x, int y){
@@ -27,6 +30,16 @@ namespace sift{
 
       float at(int x, int y) const{
           return pixels[static_cast<size_t>(y) * width + x];
+      }
+
+      static Image downsampleBy2(const Image& input) {
+          Image output(input.width / 2, input.height / 2);
+          for (int y = 0; y < output.height; ++y) {
+              for (int x = 0; x < output.width; ++x) {
+                  output.at(x, y) = input.at(2 * x, 2 * y);
+              }
+          }
+          return output;
       }
       
   };

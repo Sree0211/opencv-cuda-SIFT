@@ -16,7 +16,7 @@ namespace sift{
 
   public:
     GaussianBlur() = default;
-    GaussianBlur(float sigma_);
+    GaussianBlur(float sigma_ = 1.6f);
 
     sift::Image performGaussianBlur(const sift::Image& input, float sigma);
 

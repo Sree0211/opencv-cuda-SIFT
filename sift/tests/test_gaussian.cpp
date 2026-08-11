@@ -1,5 +1,7 @@
-#pragma once
+#include<gtest/gtest.h>
 
-int main() {
-	// Test
+#include "../include/gaussian.hpp"
+
+TEST(Gaussian, basicTest) {
+	EXPECT_EQ(1, 1);
 }

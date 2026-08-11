@@ -57,7 +57,7 @@ int main()
     constexpr int warmup = 5;
     constexpr int iterations = 20;
 
-    const std::vector<int> sizes = {
+    const std::vector<int> width = {
         8,
         16,
         32,
@@ -67,6 +67,18 @@ int main()
         1024,
         2048,
         4096
+    };
+
+    const std::vector<int> height = {
+        10,
+        20,
+        40,
+        130,
+        260,
+        520,
+        1030,
+        2050,
+        4100
     };
 
     std::cout
@@ -79,32 +91,32 @@ int main()
 
     std::cout << std::string(60, '-') << '\n';
 
-    for (int size : sizes) {
+    for (int i = 0; i < width.size(); ++i) {
         
         std::cout
         << "\nRunning "
-        << size
+        << width[i]
         << " x "
-        << size
+        << height[i]
         << std::endl;
 
         const double time_ms =
             benchmark(
-                size,
-                size,
+                width[i],
+                height[i],
                 sigma,
                 warmup,
                 iterations);
 
         const double pixels =
-            static_cast<double>(size) * size;
+            static_cast<double>(width[i]) * width[i];
 
         const double megapixels_per_second =
             pixels / (time_ms * 1000.0);
 
         std::cout
             << std::left
-            << std::setw(12) << size
+            << width[i]<<" x "<<height[i]  
             << std::setw(16) << static_cast<long long>(pixels)
             << std::setw(16) << std::fixed
             << std::setprecision(3) << time_ms

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.22)
 
 find_package(Threads REQUIRED)
-
+include(CTest)
 option(SIFT_USE_OPENCV "Build with OpenCV support" OFF)
 
 if(SIFT_USE_OPENCV)
@@ -59,12 +59,17 @@ add_executable(sift_app
 target_link_libraries(sift_app PRIVATE sift)
 
 # Tests
-add_executable(test_gaussian 
-    tests/test_gaussian.cpp)
-target_link_libraries(test_gaussian PRIVATE sift)
+if(BUILD_TESTING)
+    add_subdirectory(tests)
+endif()
 
 # Benchmarks
 add_executable(perf_gaussian
-    perf/perf_gaussian.cpp
+    perf/perf_gaussian.cpp 
 )
 target_link_libraries(perf_gaussian PRIVATE sift)
+
+add_executable(perf_gaussian_pyramid
+    perf/perf_gaussian_pyramid.cpp 
+)
+target_link_libraries(perf_gaussian_pyramid PRIVATE sift)

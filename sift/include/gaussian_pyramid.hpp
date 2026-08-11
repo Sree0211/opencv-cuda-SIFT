@@ -5,23 +5,35 @@
 
 namespace sift{
 
+    constexpr int minDownsampleImgSize = 16;
+
     struct GaussianLevel{
         sift::Image img;
-        int octaves = 0;
-        float sigma = 0.0f;
+
+        int octave = 0;
         int level = 0;
+
+        float sigma = 0.0f;
+    };
+
+    struct GaussianOctave{
+        int index = 0;
+        std::vector<sift::GaussianLevel> levels;
     };
 
     class GaussianPyramid{
     public:
-        explicit GaussianPyramid(const sift::Image& base, int scales = 3);
-        std::vector<sift::GaussianLevel> buildGaussianOctave(const sift::Image& img,int octaveIdx, float sigma0);
+        explicit GaussianPyramid(const sift::Image& base, int scales = 3, const float sigma0 = 1.6f);
+        std::vector<sift::GaussianOctave> build();
 
     private:
-        sift::Image m_inputImg;
-        std::vector<sift::GaussianLevel> m_gaussianOctave;
-        int m_scale;
-        float K;
+        sift::GaussianOctave buildOctave(const sift::Image& base,int octaveIdx) const;
+    private:        
+        Image m_inputImg;
+
+        int m_scale = 3;
+        float m_K = 0.0f;
+        float m_sigma0 = 1.6f;
     };
 }
 
