@@ -10,7 +10,6 @@ namespace sift {
             DoG() = default;
 
             void build(const std::vector<sift::GaussianOctave>& inputPyramid, std::vector<sift::GaussianOctave>&);
-
     };
 }
 

@@ -26,7 +26,14 @@ jobs:
     - name: Build project
       run: |
         cmake --build build --config Release
+    - name: List tests
+      run: |
+        ctest --test-dir build -N
     - name: Run tests
       run: |
         ctest --test-dir build --output-on-failure
+    - name: Run GoogleTest directly
+      run: |
+        ./build/sift/tests/test_gaussian --gtest_list_tests
+        ./build/sift/tests/test_gaussian_pyramid --gtest_list_tests
 

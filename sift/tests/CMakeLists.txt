@@ -26,3 +26,15 @@ target_link_libraries(test_gaussian_pyramid
     GTest::gtest_main
 )
 gtest_discover_tests(test_gaussian_pyramid)
+
+# Difference of Gaussian
+add_executable(test_dog
+    test_dog.cpp
+)
+
+target_link_libraries(test_dog
+    PRIVATE
+    sift 
+    GTest::gtest_main
+)
+gtest_discover_tests(test_dog)

@@ -24,6 +24,23 @@ namespace sift{
           assert(height_ >= 0);
       };
 
+      Image operator-(const Image& src) const{
+          assert(src.width == this->width &&
+              src.height == this->height);
+
+          Image img;
+          img.width = src.width;
+          img.height = src.height;
+          
+          for (int i = 0; i < src.width; ++i) {
+            for (int j = 0; j < src.height; ++j) {
+                img.at(i, j) = this->at(i, j) - src.at(i, j);
+            }
+          }
+
+          return img;
+      }
+
       float& at(int x, int y){
           return pixels[static_cast<size_t>(y) * width + x];
       }
