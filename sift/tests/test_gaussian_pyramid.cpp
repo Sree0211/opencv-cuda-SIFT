@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-//#include "../include/gaussian_pyramid.hpp"
+#include "../include/gaussian_pyramid.hpp"
 
 TEST(GaussianPyramid, BasicTest)
 {

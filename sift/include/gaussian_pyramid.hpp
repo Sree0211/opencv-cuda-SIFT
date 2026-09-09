@@ -23,7 +23,8 @@ namespace sift{
 
     class GaussianPyramid{
     public:
-        explicit GaussianPyramid(const sift::Image& base, int scales = 3, const float sigma0 = 1.6f);
+        explicit GaussianPyramid(const sift::Image& base, int scales = 3, 
+            const float sigma0 = 1.6f);
         std::vector<sift::GaussianOctave> build();
 
     private:

@@ -59,6 +59,9 @@ namespace sift{
           return output;
       }
       
+      size_t size() const {
+          return static_cast<size_t>(width) * height;
+      }
   };
 }
 #endif

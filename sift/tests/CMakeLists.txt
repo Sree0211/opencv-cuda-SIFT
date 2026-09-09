@@ -13,6 +13,10 @@ target_link_libraries(test_gaussian
     sift 
     GTest::gtest_main
 )
+target_include_directories(test_gaussian 
+    PRIVATE 
+    ${CMAKE_SOURCE_DIR}/sift
+)
 gtest_discover_tests(test_gaussian)
 
 # Gaussian Pyramid
@@ -25,6 +29,12 @@ target_link_libraries(test_gaussian_pyramid
     sift 
     GTest::gtest_main
 )
+
+target_include_directories(test_gaussian_pyramid 
+    PRIVATE 
+    ${CMAKE_SOURCE_DIR}/sift
+)
+
 gtest_discover_tests(test_gaussian_pyramid)
 
 # Difference of Gaussian
@@ -36,5 +46,9 @@ target_link_libraries(test_dog
     PRIVATE
     sift 
     GTest::gtest_main
+)
+target_include_directories(test_dog 
+    PRIVATE 
+    ${CMAKE_SOURCE_DIR}/sift
 )
 gtest_discover_tests(test_dog)

@@ -4,12 +4,14 @@
 #include "gaussian_pyramid.hpp"
 
 namespace sift {
-
     class DoG {
-        public:
-            DoG() = default;
+    public:
+        DoG() = default;
 
-            void build(const std::vector<sift::GaussianOctave>& inputPyramid, std::vector<sift::GaussianOctave>&);
+        std::vector<sift::GaussianOctave>& build(const std::vector<sift::GaussianOctave>&);
+        std::vector<sift::GaussianOctave> getDoG();
+    private:
+        std::vector<sift::GaussianOctave> m_DogOctaves;
     };
 }
 

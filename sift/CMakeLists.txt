@@ -16,6 +16,7 @@ set(SIFT_HEADERS
     include/keypoint.hpp
     include/orientation.hpp
     include/descriptor.hpp
+    include/extrema.hpp
 )
 
 set(SIFT_SOURCES

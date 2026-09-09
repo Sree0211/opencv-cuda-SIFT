@@ -1,7 +1,6 @@
 #include "DoG.hpp"
 
-void sift::DoG::build(const std::vector<sift::GaussianOctave>& inputPyramid, 
-    std::vector<sift::GaussianOctave>& outputDoG)
+std::vector<sift::GaussianOctave>& sift::DoG::build(const std::vector<sift::GaussianOctave>& inputPyramid)
 {
     int octave_level = 0;
     sift::GaussianOctave dog;
@@ -16,7 +15,13 @@ void sift::DoG::build(const std::vector<sift::GaussianOctave>& inputPyramid,
             dog.levels[level - 1].sigma = inputPyramid[octave_level].levels[level].sigma;
             dog.levels[level - 1].img = inputPyramid[octave_level].levels[level].img - inputPyramid[octave_level].levels[level-1].img;
         }
-        outputDoG.push_back(dog);
+        m_DogOctaves.push_back(dog);
         octave_level++;
     }
+    return m_DogOctaves;
+}
+
+std::vector<sift::GaussianOctave> sift::DoG::getDoG()
+{
+    return m_DogOctaves;
 }
