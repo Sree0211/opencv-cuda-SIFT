@@ -16,7 +16,6 @@ namespace sift {
 		int row = 0;
 		int col = 0;
 		float pixelVal = 0.0f;
-		//std::vector < sift::GaussianLevel> comparingLevels;
 	};
 
 	class Extrema {

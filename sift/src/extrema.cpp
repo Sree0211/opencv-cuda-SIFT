@@ -321,7 +321,7 @@ void sift::Extrema::assignKpOrientation(const std::vector<sift::GaussianOctave>&
 						gPLevel.img.at(row - 1, col)) / 2.0f;
 
 					const float mxy = std::sqrt(Lx * Lx + Ly * Ly);
-					const float theta = std::atan2f(Ly, Lx);
+					const float theta = std::atan2(Ly, Lx);
 					const float thetaxy = theta < 0.0f
 						? theta + 2.0f * static_cast<float>(pi)
 						: theta;
@@ -335,7 +335,7 @@ void sift::Extrema::assignKpOrientation(const std::vector<sift::GaussianOctave>&
 					const int N = 36;
 					int bin = static_cast<int>(std::floor(thetaxy * N / (2 * pi)));
 					
-					assert(bin >= 0 && bin < 35);
+					assert(bin >= 0 && bin < 36);
 					if (bin < 0 || bin > 35) { break; }
 
 					if (bin == N) {
